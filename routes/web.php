@@ -20,4 +20,5 @@ use App\Http\Controllers\WebContoller;
 
 Route::group(['middleware' => 'guest'], function(){
     Route::get('/', [WebContoller::class, 'viewLogin'])->name('view.login');
+    Route::post('/login', [WebContoller::class, 'Login'])->name('login');
 });
