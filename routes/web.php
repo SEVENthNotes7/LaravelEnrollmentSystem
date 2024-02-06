@@ -19,6 +19,10 @@ use App\Http\Controllers\WebContoller;
 // });
 
 Route::group(['middleware' => 'guest'], function(){
+    // login
     Route::get('/', [WebContoller::class, 'viewLogin'])->name('view.login');
     Route::post('/login', [WebContoller::class, 'Login'])->name('login');
+    // Register.
+    Route::get('/formregister', [WebContoller::class, 'viewRegister'])->name('view.register');
+    Route::post('register', [WebContoller::class, 'Register'])->name('register');
 });

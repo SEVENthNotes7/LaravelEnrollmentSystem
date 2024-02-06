@@ -19,6 +19,6 @@
             <input type="password" name="password"><span>Password</span><br>
             <button type="submit">Login</button>
         </form>
-        <a href="#">Didn't have any account?</a>
+        <a href="{{route('view.register')}}">Didn't have any account?</a>
     </div>
 @stop
