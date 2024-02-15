@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class WebContoller extends Controller
 {
@@ -23,7 +27,11 @@ class WebContoller extends Controller
             'email' => 'required',
             'password' => 'required'
         ]);
-        return $this->viewLogin();
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+            return redirect(route('view.home'))->with('message', 'Login Successful!');
+        }
+        return redirect(route('view.login'))->with('message', 'Login Failed!');
     }
     public function viewRegister()
     {
@@ -31,16 +39,38 @@ class WebContoller extends Controller
     }
     public function Register(Request $request)
     {
+        $created_at = Carbon::now()->toDateTimeString();
         $request->validate([
             'firstName' => 'required',
             'lastName' => 'required',
             'birthday' => 'required',
             'address' => 'required',
+            'contactNo' => 'required',
             'email' => 'required|email|unique:users',
-            'retypeemail' => 'required|email|unique:users',
+            'retypeemail' => 'required|email',
             'password' => 'required|min:6',
             'retypepassword' => 'required|min:6',
         ]);
-        dd($request);
+        $data = $request->all();
+        if ($data['email'] != $data['retypeemail']) {
+            return redirect(route('view.register'))->with('message', 'Invalid email.');
+        } elseif ($data['password'] != $data['retypepassword']) {
+            return redirect(route('view.register'))->with('message', 'Invalid Password.');
+        } else {
+            User::insert([
+                'firstname' => $data['firstName'],
+                'middleName' => $data['middleName'],
+                'lastName' => $data['lastName'],
+                'birthday' => $data['birthday'],
+                'contactNo' => $data['contactNo'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+                'created_at' => $created_at
+            ]);
+            return redirect(route('view.login'))->with('message', 'Account successfully created!');
+        }
+    }
+    public function viewHome(){
+        return view('clientViews.webpages.home');
     }
 }

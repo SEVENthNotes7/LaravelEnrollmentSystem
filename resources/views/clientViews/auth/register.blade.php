@@ -29,8 +29,11 @@
             @if ($errors->has('retypepassword'))
                 <span>{{ $errors->first('retypepassword') }}</span><br>
             @endif
+            @if ($errors->has('contactNo'))
+                <span>{{ $errors->first('contactNo') }}</span><br>
+            @endif
         </div>
-        <form action="{{ route('register') }}" method="POST">`
+        <form action="{{ route('register') }}">
             @csrf
             <h1>Sign Up</h1>
             <input type="text" name="firstName"><span>First Name:</span><br>
@@ -38,6 +41,7 @@
             <input type="text" name="lastName"><span>Last Name:</span><br>
             <input type="date" name="birthday"><span>Birthday:</span><br>
             <input type="text" name="address"><span>address:</span><br>
+            <input type="text" name="contactNo"><span>contact No:</span><br>
             <input type="text" name="email"><span>email:</span><br>
             <input type="text" name="retypeemail"><span>retype Email</span><br>
             <input type="password" name="password"><span>password</span><br>

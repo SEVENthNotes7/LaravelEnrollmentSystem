@@ -24,5 +24,8 @@ Route::group(['middleware' => 'guest'], function(){
     Route::post('/login', [WebContoller::class, 'Login'])->name('login');
     // Register.
     Route::get('/formregister', [WebContoller::class, 'viewRegister'])->name('view.register');
-    Route::post('register', [WebContoller::class, 'Register'])->name('register');
+    Route::get('/register', [WebContoller::class, 'Register'])->name('register');
+});
+Route::group(['middleware' => 'auth'],function(){
+    Route::get('/home', [WebContoller::class, 'viewHome'])->name('view.home');
 });
