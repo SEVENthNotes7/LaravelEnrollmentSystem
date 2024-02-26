@@ -1,4 +1,4 @@
-@extends('clientViews.layout.clientlayout')
+@extends('clientViews.layout.guestLayout')
 @section('content')
     <div class="form-register">
         <div class="messages-section">

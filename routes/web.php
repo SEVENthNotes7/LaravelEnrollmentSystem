@@ -28,4 +28,7 @@ Route::group(['middleware' => 'guest'], function(){
 });
 Route::group(['middleware' => 'auth'],function(){
     Route::get('/home', [WebContoller::class, 'viewHome'])->name('view.home');
+    Route::get('/announcement/{id}', [WebContoller::class, 'viewAnnouncement'])->name('view.announcemnt');
+
+    Route::get('/logout', [WebContoller::class, 'Logout'])->name('logout');
 });

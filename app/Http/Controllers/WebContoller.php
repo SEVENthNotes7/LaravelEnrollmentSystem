@@ -7,12 +7,16 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class WebContoller extends Controller
 {
     //
     // Admin
     //
+
+
+
 
     //
     // Client
@@ -32,6 +36,12 @@ class WebContoller extends Controller
             return redirect(route('view.home'))->with('message', 'Login Successful!');
         }
         return redirect(route('view.login'))->with('message', 'Login Failed!');
+    }
+    public function Logout()
+    {
+        Session::flush();
+        Auth::logout();
+        return redirect(route('view.login'));
     }
     public function viewRegister()
     {
@@ -70,7 +80,12 @@ class WebContoller extends Controller
             return redirect(route('view.login'))->with('message', 'Account successfully created!');
         }
     }
-    public function viewHome(){
+    public function viewHome()
+    {
         return view('clientViews.webpages.home');
+    }
+    public function viewAnnouncement($id)
+    {
+        return view('clientViews.webpages.announcement');
     }
 }
