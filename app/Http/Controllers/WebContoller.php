@@ -84,6 +84,18 @@ class WebContoller extends Controller
     {
         return view('clientViews.webpages.home');
     }
+    public function viewSubject($id)
+    {
+        return view('clientViews.webpages.subject');
+    }
+    public function viewGrades($id)
+    {
+        return view('clientViews.webpages.grades');
+    }
+    public function viewTuition($id)
+    {
+        return view('clientViews.webpages.tuition');
+    }
     public function viewAnnouncement($id)
     {
         return view('clientViews.webpages.announcement');
