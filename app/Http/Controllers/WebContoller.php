@@ -100,4 +100,7 @@ class WebContoller extends Controller
     {
         return view('clientViews.webpages.announcement');
     }
+    public function viewClubs(){
+        return view('clientViews.webpages.clubs');
+    }
 }

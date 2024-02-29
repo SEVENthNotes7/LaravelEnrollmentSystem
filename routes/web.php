@@ -27,11 +27,14 @@ Route::group(['middleware' => 'guest'], function(){
     Route::get('/register', [WebContoller::class, 'Register'])->name('register');
 });
 Route::group(['middleware' => 'auth'],function(){
+    //
+    // Navegation
+    //
     Route::get('/home', [WebContoller::class, 'viewHome'])->name('view.home');
     Route::get('/subject/{id}', [WebContoller::class, 'viewSubject'])->name('view.subject');
     Route::get('/grades/{id}', [WebContoller::class, 'viewGrades'])->name('view.grades');
     Route::get('/tuition/{id}', [WebContoller::class, 'viewTuition'])->name('view.tuition');
     Route::get('/announcement/{id}', [WebContoller::class, 'viewAnnouncement'])->name('view.announcemnt');
-
+    Route::get('/clubs', [WebContoller::class, 'viewClubs'])->name('view.clubs');
     Route::get('/logout', [WebContoller::class, 'Logout'])->name('logout');
 });
