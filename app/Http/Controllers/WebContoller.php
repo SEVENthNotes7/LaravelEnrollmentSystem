@@ -15,12 +15,22 @@ class WebContoller extends Controller
     // Admin
     //
 
+    # views.
+
+    public function viewAdminHome()
+    {
+        return view('admingViews.webpages.home');
+    }
+
 
 
 
     //
     // Client
     //
+
+    # views.
+
     public function viewLogin()
     {
         return view('clientViews.auth.login');
@@ -68,17 +78,19 @@ class WebContoller extends Controller
             return redirect(route('view.register'))->with('message', 'Invalid Password.');
         } else {
             User::insert([
+                'isAdmin' => '0',
                 'firstname' => $data['firstName'],
                 'middleName' => $data['middleName'],
                 'lastName' => $data['lastName'],
                 'birthday' => $data['birthday'],
+                'address' => $data['address'],
                 'contactNo' => $data['contactNo'],
                 'email' => $data['email'],
                 'password' => Hash::make($data['password']),
                 'created_at' => $created_at
             ]);
-            return redirect(route('view.login'))->with('message', 'Account successfully created!');
         }
+        return redirect(route('view.login'))->with('message', 'Account successfully created!');
     }
     public function viewHome()
     {
@@ -100,7 +112,8 @@ class WebContoller extends Controller
     {
         return view('clientViews.webpages.announcement');
     }
-    public function viewClubs(){
+    public function viewClubs()
+    {
         return view('clientViews.webpages.clubs');
     }
 }

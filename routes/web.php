@@ -18,13 +18,17 @@ use App\Http\Controllers\WebContoller;
 //     return view('welcome');
 // });
 
+//
+// Client Routes
+//
+
 Route::group(['middleware' => 'guest'], function(){
     // login
     Route::get('/', [WebContoller::class, 'viewLogin'])->name('view.login');
-    Route::post('/login', [WebContoller::class, 'Login'])->name('login');
+    Route::get('/login', [WebContoller::class, 'Login'])->name('login');
     // Register.
     Route::get('/formregister', [WebContoller::class, 'viewRegister'])->name('view.register');
-    Route::get('/register', [WebContoller::class, 'Register'])->name('register');
+    Route::post('/register', [WebContoller::class, 'Register'])->name('register');
 });
 Route::group(['middleware' => 'auth'],function(){
     //
@@ -38,3 +42,9 @@ Route::group(['middleware' => 'auth'],function(){
     Route::get('/clubs', [WebContoller::class, 'viewClubs'])->name('view.clubs');
     Route::get('/logout', [WebContoller::class, 'Logout'])->name('logout');
 });
+
+//
+// Admin Routes.
+//
+
+Route::get('/adminhome', [WebContoller::class, 'viewAdminHome']);

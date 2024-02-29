@@ -33,7 +33,7 @@
                 <span>{{ $errors->first('contactNo') }}</span><br>
             @endif
         </div>
-        <form action="{{ route('register') }}">
+        <form action="{{ route('register') }}" method="POST">
             @csrf
             <h1>Sign Up</h1>
             <input type="text" name="firstName"><span>First Name:</span><br>

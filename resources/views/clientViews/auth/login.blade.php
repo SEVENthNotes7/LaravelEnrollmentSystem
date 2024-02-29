@@ -12,7 +12,7 @@
                 <span>{{ $errors->first('password') }}</span><br>
             @endif
         </div>
-        <form action="{{ route('login') }}" method="POST">
+        <form action="{{ route('login') }}">
             @csrf
             <h1>Login</h1><br>
             <input type="text" name="email"><span>email</span><br>
