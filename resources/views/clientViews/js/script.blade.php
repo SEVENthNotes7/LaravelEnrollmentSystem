@@ -19,5 +19,4 @@
         document.getElementById("regular_student").style.display = "none";
         document.getElementById("irregular_student").style.display = "block";
     });
-
 </script>
