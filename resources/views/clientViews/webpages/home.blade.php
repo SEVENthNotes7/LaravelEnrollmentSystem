@@ -23,6 +23,13 @@
                         <input type="text" name="lName"><br>
                         <label for="degree">Degree:</label>
                         <input type="text" name="degree"><br>
+                        <label for="yearlvl">Year Level:</label>
+                        <select name="yearlvl" id="yearlvl">
+                            <option value="1st year">1st year</option>
+                            <option value="2nd year">2nd year</option>
+                            <option value="3rd year">3rd year</option>
+                            <option value="4th year">4th year</option>
+                        </select><br>
                         <label for="regularRb">regular</label>
                         <input type="radio" name="regular" id="rb_regular">
                         <label for="irregualar">irregular</label>
@@ -30,9 +37,31 @@
                     </div>
                     <div class="regular-student" id="regular_student">
                         <h1>subject regular student</h1>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Ecode</th>
+                                    <th>Course Title</th>
+                                    <th>Room</th>
+                                    <th>Schedule</th>
+                                    <th>Instructor</th>
+                                    <th>unit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    {{-- loop from table --}}
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                     <div class="irregular-student" id="irregular_student">
                         <h1>subject irregular student</h1>
+                        <label for="numSubject">number of subjects:</label>
+                        <select name="numSubject" id="numSubject">
+                            <option value="1">1</option>
+                            {{--- use for each loop data from the table of subjects ---}}
+                        </select>
                     </div>
                     <div class="btn-submit">
                         <button>Enroll</button>
