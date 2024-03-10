@@ -37,31 +37,47 @@
                     </div>
                     <div class="regular-student" id="regular_student">
                         <h1>subject regular student</h1>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Ecode</th>
-                                    <th>Course Title</th>
-                                    <th>Room</th>
-                                    <th>Schedule</th>
-                                    <th>Instructor</th>
-                                    <th>unit</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    {{-- loop from table --}}
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Ecode</th>
+                                        <th>Course Title</th>
+                                        <th>Room</th>
+                                        <th>Schedule</th>
+                                        <th>Instructor</th>
+                                        <th>unit</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        {{-- loop from table --}}
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     <div class="irregular-student" id="irregular_student">
                         <h1>subject irregular student</h1>
                         <label for="numSubject">number of subjects:</label>
-                        <select name="numSubject" id="numSubject">
-                            <option value="1">1</option>
-                            {{--- use for each loop data from the table of subjects ---}}
-                        </select>
+                        <input type="number" name="numSubject" onchange="numSub(this.value)">
+                        <div class="table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Ecode</th>
+                                        <th>Course Title</th>
+                                        <th>Room</th>
+                                        <th>Schedule</th>
+                                        <th>Instructor</th>
+                                        <th>unit</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="table">
+
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     <div class="btn-submit">
                         <button>Enroll</button>

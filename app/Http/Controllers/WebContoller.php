@@ -19,7 +19,8 @@ class WebContoller extends Controller
 
     public function viewAdminHome()
     {
-        return view('admingViews.webpages.home');
+        $data = User::all();
+        return view('admingViews.webpages.home', compact('data'));
     }
 
 
@@ -43,7 +44,7 @@ class WebContoller extends Controller
         ]);
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect(route('view.home'))->with('message', 'Login Successful!');
+            return redirect(route('view.home', ['id' => encrypt(auth()->user()->id)]));
         }
         return redirect(route('view.login'))->with('message', 'Login Failed!');
     }
@@ -92,8 +93,13 @@ class WebContoller extends Controller
         }
         return redirect(route('view.login'))->with('message', 'Account successfully created!');
     }
-    public function viewHome()
+    public function viewHome($id)
     {
+        $id = decrypt($id);
+        $IsAdmin = User::where('id', $id)->first();
+        if ($IsAdmin['isAdmin'] == 1) {
+            return redirect(route('admin.home'));
+        }
         return view('clientViews.webpages.home');
     }
     public function viewSubject($id)
@@ -116,4 +122,13 @@ class WebContoller extends Controller
     {
         return view('clientViews.webpages.clubs');
     }
+
+    // public function MyLife($life){
+
+    //     if ($life == 'bored') {
+    //         $life = "code or games";
+    //     } else {
+    //         $life = "sleeping";
+    //     }
+    // }
 }

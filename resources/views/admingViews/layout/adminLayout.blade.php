@@ -5,8 +5,6 @@
     @include('admingViews.layout.header')
 </head>
 
-<body>
-    @yield('content')
-</body>
+@yield('content')
 
 </html>

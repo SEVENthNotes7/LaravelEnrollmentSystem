@@ -22,7 +22,7 @@ use App\Http\Controllers\WebContoller;
 // Client Routes
 //
 
-Route::group(['middleware' => 'guest'], function(){
+Route::group(['middleware' => 'guest'], function () {
     // login
     Route::get('/', [WebContoller::class, 'viewLogin'])->name('view.login');
     Route::get('/login', [WebContoller::class, 'Login'])->name('login');
@@ -30,11 +30,11 @@ Route::group(['middleware' => 'guest'], function(){
     Route::get('/formregister', [WebContoller::class, 'viewRegister'])->name('view.register');
     Route::post('/register', [WebContoller::class, 'Register'])->name('register');
 });
-Route::group(['middleware' => 'auth'],function(){
+Route::group(['middleware' => 'auth'], function () {
     //
     // Navegation
     //
-    Route::get('/home', [WebContoller::class, 'viewHome'])->name('view.home');
+    Route::get('/home/{id}', [WebContoller::class, 'viewHome'])->name('view.home');
     Route::get('/subject/{id}', [WebContoller::class, 'viewSubject'])->name('view.subject');
     Route::get('/grades/{id}', [WebContoller::class, 'viewGrades'])->name('view.grades');
     Route::get('/tuition/{id}', [WebContoller::class, 'viewTuition'])->name('view.tuition');
@@ -46,5 +46,7 @@ Route::group(['middleware' => 'auth'],function(){
 //
 // Admin Routes.
 //
+Route::group(['middleware' => ['auth', 'admin']], function () {
+    Route::get('/adminhome', [WebContoller::class, 'viewAdminHome'])->name('admin.home');
+});
 
-Route::get('/adminhome', [WebContoller::class, 'viewAdminHome']);
