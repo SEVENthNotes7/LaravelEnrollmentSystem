@@ -122,13 +122,4 @@ class WebContoller extends Controller
     {
         return view('clientViews.webpages.clubs');
     }
-
-    // public function MyLife($life){
-
-    //     if ($life == 'bored') {
-    //         $life = "code or games";
-    //     } else {
-    //         $life = "sleeping";
-    //     }
-    // }
 }
